@@ -32,12 +32,26 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/restaurants">Restaurants</a>
                         </li>
+                        @if(session()->has('status'))
+                            @if(session('role') == 1)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin-panel">Admin Panel</a>
+                                </li>
+                            @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="/my-restaurant">My Restaurant</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link logout" href="javascript:void(0);">Logout</a>
+                        </li>
+                        @else
                         <li class="nav-item">
                             <a class="nav-link" href="/register">Register</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="javascript:void(0);" data-toggle="modal" data-target="#loginModal">Login</a>
                         </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -79,6 +93,9 @@
                 </div>
             </div>
         </div>
+        <form action="/logout" method="post" id="logout">
+            @csrf
+        </form>
         <!-- Bootstrap core JavaScript -->
         <script src="/vendor/jquery/jquery.min.js"></script>
         <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

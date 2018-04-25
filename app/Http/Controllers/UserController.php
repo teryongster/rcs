@@ -53,9 +53,24 @@ class UserController extends Controller
             session()->put('username', $user->username);
             session()->put('id', $user->id);
             session()->put('email', $user->email);
+            session()->put('role', $user->role);
+            session()->put('approved', $user->approved);
+
+            return redirect('/');
         }else{
             session()->flash('login-error', 'Wrong credentials. Please try again.');
             return redirect('/');
         }
+    }
+
+    public function logout(){
+        session()->forget('status');
+        session()->forget('username');
+        session()->forget('id');
+        session()->forget('email');
+        session()->forget('role');
+        session()->forget('approved');
+
+        return redirect('/');
     }
 }
