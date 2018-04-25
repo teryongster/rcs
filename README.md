@@ -1,8 +1,8 @@
 TODO NOTES:
 
 Searching of Rests
-Login/Logout
+<!-- Login/Logout -->
 Viewing of Map
 Adding of Dishes 
-Editing of Restaurant
+Editing of Restaurant/Account
 AdminPanel
