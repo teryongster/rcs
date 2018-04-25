@@ -58,6 +58,11 @@
                     <div class="modal-body">
                         <form action="/login" method="post">
                             @csrf
+                            @if(session()->has('login-error'))
+                            <div class="alert alert-danger text-center">
+                                {{ session('login-error') }}
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="username">Username:</label>
                                 <input type="username" class="form-control" name="username" id="username">
@@ -83,5 +88,13 @@
         <script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
         <!-- Custom scripts for this template -->
         <script src="/js/creative.min.js"></script>
+        <script src="/js/actions.js"></script>
+        @if(session()->has('login-error'))
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#loginModal').modal('show')
+            })
+        </script>
+        @endif
     </body>
 </html>

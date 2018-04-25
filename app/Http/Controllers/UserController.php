@@ -45,4 +45,17 @@ class UserController extends Controller
 
     	return redirect('/register');
     }
+
+    public function login(Request $r){
+        $user = User::where('username', $r->username)->where('password', $r->password)->first();
+        if($user){
+            session()->put('status', 1);
+            session()->put('username', $user->username);
+            session()->put('id', $user->id);
+            session()->put('email', $user->email);
+        }else{
+            session()->flash('login-error', 'Wrong credentials. Please try again.');
+            return redirect('/');
+        }
+    }
 }
