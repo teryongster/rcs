@@ -10,12 +10,12 @@ class UserController extends Controller
 {
     public function register(Request $r){
     	$this->validate($r, [
-    		'username' => 'required|string',
-    		'email' => 'required|email',
+    		'username' => 'required|string|unique:users',
+    		'email' => 'required|email|unique:users',
     		'password' => 'required|confirmed',
     		'name' => 'required|string',
-    		'image' => 'required|mimes:jpeg,bmp,png',
-    		'category' => 'required|mimes:jpeg,bmp,png',
+    		'image' => 'required|mimes:jpeg,jpg,bmp,png',
+    		'category' => 'required',
     		'address' => 'required',
     		'longitude' => 'required',
     		'latitude' => 'required',
@@ -36,10 +36,13 @@ class UserController extends Controller
     		'image' => $image,
     		'category' => $r->category,
     		'address' => $r->address,
-    		'longitude' => $r->longitude,
-    		'latitude' => $r->latitude,
+    		'long' => $r->longitude,
+    		'lat' => $r->latitude,
     		'description' => $r->description,
     	]);
 
+    	session()->flash('success-message', 'Thank you for registering. Please wait for your account\'s confirmation');
+
+    	return redirect('/register');
     }
 }
