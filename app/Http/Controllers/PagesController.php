@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index(){
-    	return view('template');
+    	return view('index');
+    }
+
+    public function restaurants(){
+    	return view('restaurants');
+    }
+
+    public function register(){
+    	return view('register');
     }
 }
