@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Restaurant;
+use App\User;
 
 class PagesController extends Controller
 {
@@ -23,5 +24,10 @@ class PagesController extends Controller
     public function restaurantView(Restaurant $item){
         $res = $item;
     	return view('restaurantView', compact('res'));
+    }
+    
+    public function myRestaurant(){
+        $user = User::find(session('id'));
+        return view('myRestaurant', compact('user'));
     }
 }
