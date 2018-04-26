@@ -15,3 +15,4 @@ Route::post('restaurant/{item}/add-dish', 'RestaurantController@addDish');
 Route::delete('delete-dish/{item}', 'RestaurantController@deleteDish');
 
 Route::get('admin-panel', 'PagesController@adminpanel');
+Route::get('admin-panel/registration-requests', 'PagesController@registrationRequests');

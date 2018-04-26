@@ -13,13 +13,7 @@
 </header>
 <div class="container admin-panel padding50">
 	<div class="row">
-		<div class="col-lg-4">
-			<div class="list-group">
-				<a href="/admin-panel/registration-requests" class="list-group-item">Registration Requests</a>
-				<a href="asdd" class="list-group-item">Second item</a>
-				<a href="asdd" class="list-group-item">Third item</a>
-			</div>
-		</div>
+		@include('includes.admin-side')
 		<div class="col-lg-8">
 			Welcome to Admin Panel. Please select an action on the left navigation.
 		</div>

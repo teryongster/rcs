@@ -34,4 +34,8 @@ class PagesController extends Controller
     public function adminpanel(){
         return view('adminpanel');
     }
+
+    public function registrationRequests(){
+        return view('registrationRequests');
+    }
 }
