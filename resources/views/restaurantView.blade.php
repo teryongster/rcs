@@ -44,7 +44,29 @@
         </div>
     </div>
 </section>
-<div class="res-map">
+<div class="res-map" id="map">
     sada
 </div>
+
+<input type="hidden" class="res_long" value="{{ $res->lat }}">
+<input type="hidden" class="res_lat" value="{{ $res->long }}">
+
+<script>
+    function initMap() {
+        var res_long = parseFloat($('.res_long').val())
+        var res_lat = parseFloat($('.res_lat').val())
+        var target = {lat:res_long, lng: res_lat}
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: target
+        })
+        var marker = new google.maps.Marker({
+            position: target,
+            map: map
+        })
+    }
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8tcOsujX6U_xsuM5gqd2aXVc-bstKJp8&callback=initMap">
+</script>
 @stop
