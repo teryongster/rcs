@@ -10,3 +10,4 @@ Route::post('login', 'UserController@login');
 Route::post('logout', 'UserController@logout');
 
 Route::get('my-restaurant', 'PagesController@myRestaurant');
+Route::post('restaurant/{item}/add-dish', 'RestaurantController@addDish');

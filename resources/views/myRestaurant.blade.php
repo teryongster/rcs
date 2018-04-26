@@ -122,15 +122,15 @@
 					@csrf
 					<div class="form-group">
 						<label for="dish-name">Dish Name:</label>
-						<input type="text" class="form-control" id="dish-name">
+						<input type="text" class="form-control" id="dish-name" name="name">
 					</div>
 					<div class="form-group">
 						<label for="dish-description">Description:</label>
-						<textarea class="form-control" id="dish-description" rows="4" style="resize: none;"></textarea>
+						<textarea class="form-control" id="dish-description" rows="4" style="resize: none;" name="description"></textarea>
 					</div>
 					<div class="form-group">
 						<label for="dish-image">Photo:</label>
-						<input type="file" class="form-control dish-image">
+						<input type="file" class="form-control dish-image" name="image">
 					</div> 
 					<div class="form-group">
 						<img src="" class="res-image-view dish-image-view">
