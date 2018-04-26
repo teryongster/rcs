@@ -12,6 +12,17 @@ class PagesController extends Controller
     	return view('index');
     }
 
+    public function search(Request $r){
+        $query = $r->q;
+        $category = $r->category;
+        if($r->category){
+            $restaurants = Restaurant::where('name', 'like', '%'.$r->q.'%')->where('category', $r->category)->get();
+        }else{
+            $restaurants = Restaurant::where('name', 'like', '%'.$r->q.'%')->get();
+        }
+        return view('restaurants', compact('restaurants', 'query', 'category'));
+    }
+
     public function restaurants(){
         $restaurants = Restaurant::orderBy('created_at', 'desc')->get();
     	return view('restaurants', compact('restaurants'));

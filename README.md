@@ -7,4 +7,4 @@ Searching of Rests
 <!-- Editing of Dishes  -->
 <!-- Editing of Restaurant/Account -->
 AdminPanel
-add price to dish
+<!-- add price to dish -->

@@ -35,6 +35,7 @@
                             </div>
                             <div class="project-category text-faded">
                                 {{ $product->description }}
+                                <h6><small>Price: ₱{{ $product->price }}</small></h6>
                             </div>
                         </div>
                     </div>
