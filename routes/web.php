@@ -11,3 +11,4 @@ Route::post('logout', 'UserController@logout');
 
 Route::get('my-restaurant', 'PagesController@myRestaurant');
 Route::post('restaurant/{item}/add-dish', 'RestaurantController@addDish');
+Route::delete('delete-dish/{item}', 'RestaurantController@deleteDish');

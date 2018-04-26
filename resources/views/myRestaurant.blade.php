@@ -87,7 +87,7 @@
 			<div class="row myrestaurant-dishes">
 				@if($user->restaurant->products->count() > 0)
 					@foreach($user->restaurant->products as $product)
-						<a href="javascript:void(0);" class="col-lg-4 myrestaurant-dishes-box" data-toggle="modal" data-target="#dishView" style="background-image: url('/{{ $product->image }}');" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-image="/{{ $product->image }}">
+						<a href="javascript:void(0);" class="col-lg-4 myrestaurant-dishes-box" data-toggle="modal" data-target="#dishView" style="background-image: url('/{{ $product->image }}');" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-image="/{{ $product->image }}" data-deleteurl="/delete-dish/{{ $product->id }}">
 						</a>
 					@endforeach
 				@endif
@@ -100,13 +100,26 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title dish-name">Dish</h4>
+				<h4 class="modal-title dish-name">Add Dish</h4>
+				<button class="btn btn-danger delete-dish">Delete</button>
 			</div>
 			<div class="modal-body">
-				<p>Some text in the modal.</p>
+				<form action="">
+					@csrf
+					<div class="form-group">
+						<label for="dish-name">Dish Name:</label>
+						<input type="text" class="form-control" id="dish-name" name="name" disabled>
+					</div>
+					<div class="form-group">
+						<label for="dish-description">Description:</label>
+						<textarea disabled class="form-control" id="dish-description" rows="4" style="resize: none;" name="description"></textarea>
+					</div>
+					<div class="form-group">
+						<img src="" class="res-image-view dish-image-view">
+					</div>
+				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
@@ -144,4 +157,8 @@
 		</div>
 	</div>
 </div>
+<form id="delete-form" method="post" action="">
+	@csrf
+	{{ method_field('delete') }}
+</form>
 @stop

@@ -27,4 +27,9 @@ class RestaurantController extends Controller
 
     	return back();
     }
+
+    public function deleteDish(RestaurantProduct $item){
+    	$item->delete();
+    	return back();
+    }
 }
