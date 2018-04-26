@@ -26,7 +26,8 @@
             @foreach($res->products as $product)
             <div class="col-lg-4 col-sm-6">
                 <a class="portfolio-box" href="/{{ $product->image }}">
-                    <img class="img-fluid" src="/{{ $product->image }}" alt="">
+                    {{-- <img class="img-fluid" src="/{{ $product->image }}" alt=""> --}}
+                    <div class="dish-view-image" style="background-image: url('/{{ $product->image }}');"></div>
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-name">
