@@ -25,6 +25,14 @@ $('.delete-dish').click(function(){
 	$('#delete-form').submit()
 })
 
+$('.userAction').click(function(){
+	var link = $(this).data('url')
+	$('#action-form').attr('action', link)
+	$('#action-form').submit()
+})
+
+// wew
+
 function changeImage(input) {
     if(input.files && input.files[0]){
         var reader = new FileReader()

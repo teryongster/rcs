@@ -36,6 +36,7 @@ class PagesController extends Controller
     }
 
     public function registrationRequests(){
-        return view('registrationRequests');
+        $users = User::where('approved', 0)->orderBy('created_at')->get();
+        return view('registrationRequests', compact('users'));
     }
 }

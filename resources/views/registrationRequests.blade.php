@@ -19,30 +19,31 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Firstname</th>
-						<th>Lastname</th>
+						<th>Username</th>
 						<th>Email</th>
+						<th>Restaurant Name</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
+					@foreach($users as $user)
 					<tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
+						<td>{{ $user->username }}</td>
+						<td>{{ $user->email }}</td>
+						<td>{{ $user->restaurant->name }}</td>
+						<td>
+							<button class="userAction btn btn-success" data-url="/approve-user/{{ $user->id }}">Approve</button>
+							<button class="userAction btn btn-danger" data-url="/decline-user/{{ $user->id }}">Decline</button>
+						</td>
 					</tr>
-					<tr>
-						<td>Mary</td>
-						<td>Moe</td>
-						<td>mary@example.com</td>
-					</tr>
-					<tr>
-						<td>July</td>
-						<td>Dooley</td>
-						<td>july@example.com</td>
-					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
+
+<form id="action-form" action="" method="post">
+	@csrf
+</form>
 @stop

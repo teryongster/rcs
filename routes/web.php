@@ -16,3 +16,6 @@ Route::delete('delete-dish/{item}', 'RestaurantController@deleteDish');
 
 Route::get('admin-panel', 'PagesController@adminpanel');
 Route::get('admin-panel/registration-requests', 'PagesController@registrationRequests');
+
+Route::post('approve-user/{item}', 'UserController@approve');
+Route::post('decline-user/{item}', 'UserController@decline');

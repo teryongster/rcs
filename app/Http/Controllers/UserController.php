@@ -120,4 +120,18 @@ class UserController extends Controller
 
         return redirect('/');
     }
+
+    public function approve(User $item){
+        $item->update([
+            'approved' => 1
+        ]); 
+
+        return back();
+    }
+
+    public function decline(User $item){
+        $item->delete();
+
+        return back();
+    }
 }
