@@ -16,9 +16,9 @@ class PagesController extends Controller
         $query = $r->q;
         $category = $r->category;
         if($r->category){
-            $restaurants = Restaurant::where('name', 'like', '%'.$r->q.'%')->where('category', $r->category)->get();
+            $restaurants = Restaurant::where('approved', 1)->where('name', 'like', '%'.$r->q.'%')->where('category', $r->category)->get();
         }else{
-            $restaurants = Restaurant::where('name', 'like', '%'.$r->q.'%')->get();
+            $restaurants = Restaurant::where('approved', 1)->where('name', 'like', '%'.$r->q.'%')->get();
         }
         return view('restaurants', compact('restaurants', 'query', 'category'));
     }
@@ -26,9 +26,9 @@ class PagesController extends Controller
     public function restaurants(Request $r){
         if($r->sort){
             $sort = $r->sort;
-            $restaurants = Restaurant::orderBy($r->sort, 'asc')->get();
+            $restaurants = Restaurant::where('approved', 1)->orderBy($r->sort, 'asc')->get();
         }else{
-            $restaurants = Restaurant::orderBy('created_at', 'desc')->get();
+            $restaurants = Restaurant::where('approved', 1)->orderBy('created_at', 'desc')->get();
         }
     	return view('restaurants', compact('restaurants', 'sort'));
     }

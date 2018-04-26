@@ -82,6 +82,7 @@
 		<div class="col-lg-5">
 			<h2>Dishes</h2>
 			<br>
+			@if(session('approved') == 1)
 			<a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#addDish">Add Dish</a>
 			<br><br>
 			<div class="row myrestaurant-dishes">
@@ -92,6 +93,9 @@
 				@endforeach
 				@endif
 			</div>
+			@else
+				<h5>You cannot use this feature because your account has not been approved by the admin yet.</h5>
+			@endif
 		</div>
 	</div>
 </div>

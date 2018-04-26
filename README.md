@@ -8,3 +8,4 @@ Searching of Rests
 <!-- Editing of Restaurant/Account -->
 AdminPanel
 <!-- add price to dish -->
+User can login but cannot add dishes
