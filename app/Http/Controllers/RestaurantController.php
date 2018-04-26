@@ -13,7 +13,8 @@ class RestaurantController extends Controller
     	$this->validate($r, [
     		'name' => 'required|string',
     		'image' => 'required|mimes:jpeg,jpg,bmp,png',
-    		'description' => 'required',
+            'description' => 'required',
+    		'price' => 'required',
     	]);
 
     	$image = $r->image->store('/uploads/images');
@@ -22,7 +23,8 @@ class RestaurantController extends Controller
     		'restaurant_id' => $item->id,
     		'name' => $r->name,
     		'description' => $r->description,
-    		'image' => $image,
+            'image' => $image,
+    		'price' => $r->price,
     	]);
 
         session()->flash('success-message', 'Data has been updated.');

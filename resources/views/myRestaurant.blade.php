@@ -87,7 +87,7 @@
 			<div class="row myrestaurant-dishes">
 				@if($user->restaurant->products->count() > 0)
 				@foreach($user->restaurant->products as $product)
-				<a href="javascript:void(0);" class="col-lg-4 myrestaurant-dishes-box" data-toggle="modal" data-target="#dishView" style="background-image: url('/{{ $product->image }}');" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-image="/{{ $product->image }}" data-deleteurl="/delete-dish/{{ $product->id }}">
+				<a href="javascript:void(0);" class="col-lg-4 myrestaurant-dishes-box" data-toggle="modal" data-target="#dishView" style="background-image: url('/{{ $product->image }}');" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-image="/{{ $product->image }}" data-deleteurl="/delete-dish/{{ $product->id }}" data-price="{{ $product->price }}">
 				</a>
 				@endforeach
 				@endif
@@ -109,6 +109,10 @@
 					<div class="form-group">
 						<label for="dish-name">Dish Name:</label>
 						<input type="text" class="form-control" id="dish-name" name="name" disabled>
+					</div>
+					<div class="form-group">
+						<label for="dish-price">Price:</label>
+						<input type="text" class="form-control" id="dish-price" name="price" disabled>
 					</div>
 					<div class="form-group">
 						<label for="dish-description">Description:</label>
@@ -137,6 +141,10 @@
 					<div class="form-group">
 						<label for="dish-name">Dish Name:</label>
 						<input type="text" class="form-control" id="dish-name" name="name">
+					</div>
+					<div class="form-group">
+						<label for="dish-price">Price:</label>
+						<input type="text" class="form-control" id="dish-price" name="price">
 					</div>
 					<div class="form-group">
 						<label for="dish-description">Description:</label>

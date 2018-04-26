@@ -19,6 +19,7 @@ class CreateRestaurantProductsTable extends Migration
             $table->string('image');
             $table->string('name');
             $table->text('description');
+            $table->string('price');
             $table->integer('updated')->default(0);
             $table->timestamps();
         });

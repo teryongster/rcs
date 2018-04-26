@@ -11,9 +11,11 @@ $('.myrestaurant-dishes-box').click(function(){
 	description = $(this).data('description')
 	image = $(this).data('image')
 	deleteurl = $(this).data('deleteurl')
+	price = $(this).data('price')
 
 	$('#dishView').find('#dish-name').val(name)
 	$('#dishView').find('#dish-description').val(description)
+	$('#dishView').find('#dish-price').val(price)
 	$('#dishView').find('img').attr('src', image)
 
 	$('#delete-form').attr('action', deleteurl)
