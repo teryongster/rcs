@@ -82,7 +82,7 @@
 		<div class="col-lg-5">
 			<h2>Dishes</h2>
 			<br>
-			<a href="javascript:void(0);" class="btn btn-primary">Add Dish</a>
+			<a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#addDish">Add Dish</a>
 			<br><br>
 			<div class="row myrestaurant-dishes">
 				@if($user->restaurant->products->count() > 0)
@@ -106,6 +106,39 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Add Dish Modal -->
+<div id="addDish" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title dish-name">Add Dish</h4>
+			</div>
+			<div class="modal-body">
+				<form action="/restaurant/{{ $user->restaurant->id }}/add-dish/" method="post" enctype="multipart/form-data">
+					@csrf
+					<div class="form-group">
+						<label for="dish-name">Dish Name:</label>
+						<input type="text" class="form-control" id="dish-name">
+					</div>
+					<div class="form-group">
+						<label for="dish-description">Description:</label>
+						<textarea class="form-control" id="dish-description" rows="4" style="resize: none;"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="dish-image">Photo:</label>
+						<input type="file" class="form-control dish-image">
+					</div> 
+					<div class="form-group">
+						<img src="" class="res-image-view dish-image-view">
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+			<div class="modal-footer">
 			</div>
 		</div>
 	</div>
