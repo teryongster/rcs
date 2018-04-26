@@ -86,9 +86,10 @@
 			<br><br>
 			<div class="row myrestaurant-dishes">
 				@if($user->restaurant->products->count() > 0)
-				<a href="javascript:void(0);" class="col-lg-4 myrestaurant-dishes-box" data-toggle="modal" data-target="#dishView" data-name="">
-					asdsa
-				</a>
+					@foreach($user->restaurant->products as $product)
+						<a href="javascript:void(0);" class="col-lg-4 myrestaurant-dishes-box" data-toggle="modal" data-target="#dishView" style="background-image: url('/{{ $product->image }}');" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-image="/{{ $product->image }}">
+						</a>
+					@endforeach
 				@endif
 			</div>
 		</div>
