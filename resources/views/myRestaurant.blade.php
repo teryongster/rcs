@@ -12,21 +12,21 @@
 	</div>
 </header>
 <div class="container padding50">
+	@if(session()->has('success-message'))
+	<div class="alert alert-success">
+		<strong>Success!</strong> {{ session('success-message') }}
+	</div>
+	@endif
 	<div class="row">
 		<div class="col-lg-7">
 			@include('errors.validation_errors')
-			@if(session()->has('success-message'))
-			<div class="alert alert-success">
-				<strong>Success!</strong> {{ session('success-message') }}
-			</div>
-			@endif
-			<form action="/my-restaurtant" method="post" enctype="multipart/form-data">
+			<form action="/my-restaurant" method="post" enctype="multipart/form-data">
 				<h2>Restaurant/Account Info</h2><br>
 				@csrf
 				{{ method_field('patch') }}
 				<div class="form-group">
 					<label for="username">Username:</label>
-					<input type="text" name="username" class="form-control" id="username" value="{{ $user->username }}">
+					<input type="text" disabled class="form-control" id="username" value="{{ $user->username }}">
 				</div>
 				<div class="form-group">
 					<label for="email">Email address:</label>
@@ -55,9 +55,9 @@
 				<div class="form-group">
 					<label for="category">Category:</label>
 					<select name="category" id="category" class="form-control">
-						<option>Fastfood Chain</option>
-						<option>Eatery</option>
-						<option>Restaurant</option>
+						<option {{ ($user->restaurant->category == 'Fastfood Chain') ? 'selected' : ''}}>Fastfood Chain</option>
+						<option {{ ($user->restaurant->category == 'Eatery') ? 'selected' : ''}}>Eatery</option>
+						<option {{ ($user->restaurant->category == 'Restaurant') ? 'selected' : ''}}>Restaurant</option>
 					</select>
 				</div>
 				<div class="form-group">
@@ -76,7 +76,7 @@
 					<label for="description">Brief Description:</label>
 					<textarea name="description" id="description" class="form-control" rows="6" style="resize: none;">{{ $user->restaurant->description }}</textarea>
 				</div>
-				<button type="submit" class="btn btn-primary" style="width: 100%; border-radius: 5px;">Submit</button>
+				<button type="submit" class="btn btn-primary" style="width: 100%; border-radius: 5px;">Save Changes</button>
 			</form>
 		</div>
 		<div class="col-lg-5">
@@ -86,10 +86,10 @@
 			<br><br>
 			<div class="row myrestaurant-dishes">
 				@if($user->restaurant->products->count() > 0)
-					@foreach($user->restaurant->products as $product)
-						<a href="javascript:void(0);" class="col-lg-4 myrestaurant-dishes-box" data-toggle="modal" data-target="#dishView" style="background-image: url('/{{ $product->image }}');" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-image="/{{ $product->image }}" data-deleteurl="/delete-dish/{{ $product->id }}">
-						</a>
-					@endforeach
+				@foreach($user->restaurant->products as $product)
+				<a href="javascript:void(0);" class="col-lg-4 myrestaurant-dishes-box" data-toggle="modal" data-target="#dishView" style="background-image: url('/{{ $product->image }}');" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-image="/{{ $product->image }}" data-deleteurl="/delete-dish/{{ $product->id }}">
+				</a>
+				@endforeach
 				@endif
 			</div>
 		</div>
@@ -145,7 +145,7 @@
 					<div class="form-group">
 						<label for="dish-image">Photo:</label>
 						<input type="file" class="form-control dish-image" name="image">
-					</div> 
+					</div>
 					<div class="form-group">
 						<img src="" class="res-image-view dish-image-view">
 					</div>

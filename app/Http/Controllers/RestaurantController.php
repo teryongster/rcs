@@ -25,11 +25,14 @@ class RestaurantController extends Controller
     		'image' => $image,
     	]);
 
+        session()->flash('success-message', 'Data has been updated.');
     	return back();
     }
 
     public function deleteDish(RestaurantProduct $item){
     	$item->delete();
+
+        session()->flash('success-message', 'Data has been deleted.');
     	return back();
     }
 }

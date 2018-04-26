@@ -46,6 +46,49 @@ class UserController extends Controller
     	return redirect('/register');
     }
 
+    public function patch(Request $r){
+        $this->validate($r, [
+            'email' => 'required|email',
+            'password' => 'sometimes|confirmed',
+            'name' => 'required|string',
+            'image' => 'sometimes|mimes:jpeg,jpg,bmp,png',
+            'category' => 'required',
+            'address' => 'required',
+            'longitude' => 'required',
+            'latitude' => 'required',
+            'description' => 'required',
+        ]);
+
+        User::find(session('id'))->update([
+            'email' => $r->email,
+        ]);
+
+        if($r->password){
+            User::find(session('id'))->update([
+                'password' => $r->password,
+            ]);
+        }
+
+        if($r->image){
+            $image = $r->image->store('/uploads/images');
+            Restaurant::where('user_id', session('id'))->update([
+                'image' => $image,
+            ]);
+        }
+
+        Restaurant::where('user_id', session('id'))->update([
+            'name' => $r->name,
+            'category' => $r->category,
+            'address' => $r->address,
+            'long' => $r->longitude,
+            'lat' => $r->latitude,
+            'description' => $r->description,
+        ]);
+
+        session()->flash('success-message', 'Data has been updated.');
+        return back();
+    }
+
     public function login(Request $r){
         $user = User::where('username', $r->username)->where('password', $r->password)->first();
         if($user){
