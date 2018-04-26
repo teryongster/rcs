@@ -30,4 +30,8 @@ class PagesController extends Controller
         $user = User::find(session('id'));
         return view('myRestaurant', compact('user'));
     }
+
+    public function adminpanel(){
+        return view('adminpanel');
+    }
 }

@@ -13,3 +13,5 @@ Route::get('my-restaurant', 'PagesController@myRestaurant');
 Route::patch('my-restaurant', 'UserController@patch');
 Route::post('restaurant/{item}/add-dish', 'RestaurantController@addDish');
 Route::delete('delete-dish/{item}', 'RestaurantController@deleteDish');
+
+Route::get('admin-panel', 'PagesController@adminpanel');
