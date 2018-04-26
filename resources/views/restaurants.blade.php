@@ -36,9 +36,10 @@
                     <h6 class="pull-left section-heading">Sort By:
                     <select class="res-sort">
                         <option value="">Default</option>
-                        <option value="name">Name</option>
-                        <option value="date">Date</option>
-                        <option value="address">Address</option>
+                        <option {{ (!empty($sort) && $sort == 'name') ? 'selected' : '' }} value="name">Name</option>
+                        <option {{ (!empty($sort) && $sort == 'created_at') ? 'selected' : '' }} value="created_at">Date</option>
+                        <option {{ (!empty($sort) && $sort == 'address') ? 'selected' : '' }} value="address">Address</option>
+                        <option {{ (!empty($sort) && $sort == 'category') ? 'selected' : '' }} value="category">Category</option>
                     </select>
                     </h6>
                 </div>
@@ -51,6 +52,7 @@
                     <div class="service-box mt-5 mx-auto">
                         <div class="image" style="background-image: url('/{{ $res->image }}')"></div>
                         <h3 class="mb-3"><a href="/restaurants/{{ $res->id }}">{{ $res->name }}</a></h3>
+                        <h6><small>{{ $res->category }}</small></h6>
                         <p class="text-muted mb-0">{{ $res->address }}</p>
                     </div>
                 </div>

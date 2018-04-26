@@ -23,9 +23,14 @@ class PagesController extends Controller
         return view('restaurants', compact('restaurants', 'query', 'category'));
     }
 
-    public function restaurants(){
-        $restaurants = Restaurant::orderBy('created_at', 'desc')->get();
-    	return view('restaurants', compact('restaurants'));
+    public function restaurants(Request $r){
+        if($r->sort){
+            $sort = $r->sort;
+            $restaurants = Restaurant::orderBy($r->sort, 'asc')->get();
+        }else{
+            $restaurants = Restaurant::orderBy('created_at', 'desc')->get();
+        }
+    	return view('restaurants', compact('restaurants', 'sort'));
     }
 
     public function register(){

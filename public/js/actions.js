@@ -32,9 +32,8 @@ $('.userAction').click(function(){
 })
 
 $('.res-sort').change(function(){
-	// location.href = ""
-	var wew = $(this).find(':selected').val()
-	alert(wew)
+	var sort = $(this).find(':selected').val()
+	location.href= "/restaurants?sort="+sort
 })
 
 // wew
