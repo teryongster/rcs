@@ -31,6 +31,12 @@ $('.userAction').click(function(){
 	$('#action-form').submit()
 })
 
+$('.res-sort').change(function(){
+	// location.href = ""
+	var wew = $(this).find(':selected').val()
+	alert(wew)
+})
+
 // wew
 
 function changeImage(input) {

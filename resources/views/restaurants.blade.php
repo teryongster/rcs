@@ -34,11 +34,11 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h6 class="pull-left section-heading">Sort By:
-                    <select>
-                        <option>Default</option>
-                        <option>Name</option>
-                        <option>Date</option>
-                        <option>Address</option>
+                    <select class="res-sort">
+                        <option value="">Default</option>
+                        <option value="name">Name</option>
+                        <option value="date">Date</option>
+                        <option value="address">Address</option>
                     </select>
                     </h6>
                 </div>
