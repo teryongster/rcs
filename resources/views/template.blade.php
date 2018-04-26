@@ -38,9 +38,13 @@
                                     <a class="nav-link" href="/admin-panel">Admin Panel</a>
                                 </li>
                             @endif
+                        @if(session()->has('role') && session('role') == 1)
+
+                        @else
                         <li class="nav-item">
                             <a class="nav-link" href="/my-restaurant">My Restaurant</a>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link logout" href="javascript:void(0);">Logout</a>
                         </li>
