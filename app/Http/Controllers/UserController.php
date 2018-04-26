@@ -49,14 +49,18 @@ class UserController extends Controller
     public function login(Request $r){
         $user = User::where('username', $r->username)->where('password', $r->password)->first();
         if($user){
-            session()->put('status', 1);
-            session()->put('username', $user->username);
-            session()->put('id', $user->id);
-            session()->put('email', $user->email);
-            session()->put('role', $user->role);
-            session()->put('approved', $user->approved);
-
-            return redirect('/');
+            if($user->approved == 0){
+                session()->flash('login-error', 'Your account has not been approved by the admin yet.');
+                return redirect('/');
+            }else{
+                session()->put('status', 1);
+                session()->put('username', $user->username);
+                session()->put('id', $user->id);
+                session()->put('email', $user->email);
+                session()->put('role', $user->role);
+                session()->put('approved', $user->approved);
+                return redirect('/');
+            }
         }else{
             session()->flash('login-error', 'Wrong credentials. Please try again.');
             return redirect('/');
